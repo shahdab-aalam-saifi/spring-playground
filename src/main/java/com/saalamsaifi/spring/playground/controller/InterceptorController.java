@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/v1/")
+@RequestMapping("/v1")
 public class InterceptorController {
   private final IInterceptorService service;
 
@@ -20,7 +20,7 @@ public class InterceptorController {
     this.service = service;
   }
 
-  @GetMapping("getPerson")
+  @GetMapping("/getPerson")
   public ResponseEntity<Person> getPerson(@RequestParam(required = false) String firstName) {
     var person = service.getPersonByFirstName(firstName);
 
