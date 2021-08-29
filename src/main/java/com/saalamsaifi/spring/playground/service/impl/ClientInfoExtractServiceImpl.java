@@ -41,7 +41,7 @@ public class ClientInfoExtractServiceImpl implements IClientInfoExtractService {
     } catch (JsonProcessingException e) {
       return NOT_AVAILABLE;
     }
-    return Objects.nonNull(node.get(field)) ? node.get(field).asText(): NOT_AVAILABLE;
+    return Objects.nonNull(node.get(field)) ? node.get(field).asText() : NOT_AVAILABLE;
   }
 
   private String decodeBase64Payload(String src) {

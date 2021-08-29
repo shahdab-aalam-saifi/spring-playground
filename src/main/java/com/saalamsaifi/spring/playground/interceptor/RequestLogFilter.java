@@ -19,13 +19,15 @@ import java.io.IOException;
 
 @Component
 public class RequestLogFilter extends OncePerRequestFilter {
-  @Autowired private IRequestLogService requestService;
-  @Autowired private IClientInfoExtractService clientInfoService;
+  @Autowired
+  private IRequestLogService requestService;
+  @Autowired
+  private IClientInfoExtractService clientInfoService;
 
   @Override
   protected void doFilterInternal(
-      HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-      throws ServletException, IOException {
+    HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+    throws ServletException, IOException {
     var requestWrapper = new ContentCachingRequestWrapper(request);
     var responseWrapper = new ContentCachingResponseWrapper(response);
 

@@ -4,11 +4,14 @@ import com.saalamsaifi.spring.playground.request.PostExtractRequest;
 import com.saalamsaifi.spring.playground.service.IEncoderService;
 import com.saalamsaifi.spring.playground.service.IRealtimeOCRService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RealtimeOCRServiceImpl implements IRealtimeOCRService {
-  @Autowired private IEncoderService encoderService;
+  @Qualifier("encode")
+  @Autowired
+  private IEncoderService encoderService;
 
   @Override
   public String extract(PostExtractRequest request) {

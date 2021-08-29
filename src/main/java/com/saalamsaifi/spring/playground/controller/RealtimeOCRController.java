@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/v1/realtime")
 public class RealtimeOCRController {
-  @Autowired private IRealtimeOCRService service;
+  private final IRealtimeOCRService service;
+
+  @Autowired
+  public RealtimeOCRController(IRealtimeOCRService service) {
+    this.service = service;
+  }
 
   @PostMapping("/extract")
   public String postExtract(@RequestBody PostExtractRequest request) {

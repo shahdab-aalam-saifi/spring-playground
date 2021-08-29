@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class RequestLogServiceImpl implements IRequestLogService {
   @Override
   public Request logRequestInfo(ContentCachingRequestWrapper wrapper)
-      throws UnsupportedEncodingException {
+    throws UnsupportedEncodingException {
 
     //// Request Headers
     var allowedHeaders = RequestLogUtils.getRequestHeaders();
@@ -43,7 +43,7 @@ public class RequestLogServiceImpl implements IRequestLogService {
 
   @Override
   public Response logResponseInfo(ContentCachingResponseWrapper wrapper)
-      throws UnsupportedEncodingException {
+    throws UnsupportedEncodingException {
     //// Response Headers
     var allowedHeaders = RequestLogUtils.getResponseHeaders();
     var headers = new HashMap<String, String>();

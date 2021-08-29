@@ -1,6 +1,7 @@
 package com.saalamsaifi.spring.playground.service.impl;
 
 import com.saalamsaifi.spring.playground.service.IEncoderService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -10,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 @Service
+@Qualifier("image")
 public class ImageEncoderService implements IEncoderService {
   @Override
   public File encode(String fileName, String fileType, String fileBytes) {
