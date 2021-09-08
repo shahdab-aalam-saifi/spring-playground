@@ -25,7 +25,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   private final UserDetailsService service;
   private final JwtRequestFilter filter;
 
-  public WebSecurityConfig(JwtAuthenticationEntryPoint entryPoint, @Qualifier("jwt") UserDetailsService service, JwtRequestFilter filter) {
+  public WebSecurityConfig(
+      JwtAuthenticationEntryPoint entryPoint,
+      @Qualifier("jwt") UserDetailsService service,
+      JwtRequestFilter filter) {
     this.entryPoint = entryPoint;
     this.service = service;
     this.filter = filter;
@@ -49,14 +52,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.csrf().disable()
+    http.csrf()
+        .disable()
         .authorizeRequests()
-          .antMatchers("/v1/secure/authenticate").permitAll()
-          .anyRequest().authenticated()
-      .and()
-        .exceptionHandling().authenticationEntryPoint(entryPoint)
-      .and()
-        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        .antMatchers("/v1/secure/authenticate")
+        .permitAll()
+        .anyRequest()
+        .authenticated()
+        .and()
+        .exceptionHandling()
+        .authenticationEntryPoint(entryPoint)
+        .and()
+        .sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
     http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
   }

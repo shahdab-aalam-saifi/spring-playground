@@ -1,5 +1,6 @@
 package com.saalamsaifi.spring.playground.service.impl;
 
+import com.saalamsaifi.spring.playground.common.utils.FileUtils;
 import com.saalamsaifi.spring.playground.service.IEncoderService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import java.util.Base64;
 public class DocumentEncoderService implements IEncoderService {
   @Override
   public File encode(String fileName, String fileType, String fileBytes) {
-    var file = new File(fileName + "." + fileType);
+    var file = new File(FileUtils.getUniqueFileName(fileName, fileType));
     var decoder = Base64.getDecoder();
     var documentBytes = decoder.decode(fileBytes.getBytes(StandardCharsets.UTF_8));
 

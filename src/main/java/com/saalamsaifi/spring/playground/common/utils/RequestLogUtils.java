@@ -7,8 +7,7 @@ import java.util.List;
 
 @Component
 public final class RequestLogUtils {
-  private RequestLogUtils() {
-  }
+  private RequestLogUtils() {}
 
   //// Request
   public static List<String> getRequestHeaders() {

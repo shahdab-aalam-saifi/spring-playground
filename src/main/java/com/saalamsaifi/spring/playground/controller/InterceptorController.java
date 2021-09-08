@@ -3,7 +3,6 @@ package com.saalamsaifi.spring.playground.controller;
 import com.saalamsaifi.spring.playground.common.exception.NoPersonFoundException;
 import com.saalamsaifi.spring.playground.model.Person;
 import com.saalamsaifi.spring.playground.service.IInterceptorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class InterceptorController {
   private final IInterceptorService service;
 
-  @Autowired
   public InterceptorController(IInterceptorService service) {
     this.service = service;
   }

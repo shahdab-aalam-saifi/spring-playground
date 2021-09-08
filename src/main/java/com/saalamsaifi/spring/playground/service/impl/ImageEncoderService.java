@@ -1,5 +1,6 @@
 package com.saalamsaifi.spring.playground.service.impl;
 
+import com.saalamsaifi.spring.playground.common.utils.FileUtils;
 import com.saalamsaifi.spring.playground.service.IEncoderService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class ImageEncoderService implements IEncoderService {
 
     try (ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes)) {
       var image = ImageIO.read(bis);
-      var file = new File(fileName + "." + fileType);
+      var file = new File(FileUtils.getUniqueFileName(fileName, fileType));
 
       ImageIO.write(image, fileType, file);
 

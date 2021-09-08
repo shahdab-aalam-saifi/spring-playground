@@ -1,7 +1,6 @@
 package com.saalamsaifi.spring.playground.repository;
 
 import com.saalamsaifi.spring.playground.model.Person;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -11,7 +10,6 @@ import java.util.List;
 public class PersonRepository implements ListRepository<Person> {
   private final List<Person> list;
 
-  @Autowired
   public PersonRepository() {
     this.list = new ArrayList<>();
   }

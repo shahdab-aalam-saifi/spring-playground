@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.saalamsaifi.spring.playground.service.IClientInfoExtractService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
@@ -15,7 +14,11 @@ import java.util.Objects;
 public class ClientInfoExtractServiceImpl implements IClientInfoExtractService {
   public static final String NOT_AVAILABLE = "Not Available";
 
-  @Autowired private ObjectMapper mapper;
+  private final ObjectMapper mapper;
+
+  public ClientInfoExtractServiceImpl() {
+    this.mapper = new ObjectMapper();
+  }
 
   @Override
   public String getClientId(String authorization) {

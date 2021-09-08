@@ -12,7 +12,6 @@ import static org.apache.logging.log4j.util.Strings.isBlank;
 public class InterceptorServiceImpl implements IInterceptorService {
   private final ListRepository<Person> repository;
 
-  @Autowired
   public InterceptorServiceImpl(ListRepository<Person> repository) {
     this.repository = repository;
   }

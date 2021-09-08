@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +39,9 @@ public class JwtTokenUtils implements Serializable {
   }
 
   private String doGenerateToken(Map<String, Object> claims, String subject) {
+    claims.put("username", subject);
+    claims.put("ClientId", Base64.getEncoder().encodeToString(subject.getBytes()));
+
     return Jwts.builder()
         .setClaims(claims)
         .setSubject(subject)

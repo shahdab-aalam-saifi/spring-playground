@@ -4,15 +4,18 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+import static com.saalamsaifi.spring.playground.common.enums.FileType.*;
+
 @Component
 public final class EncoderUtils {
   private EncoderUtils() {}
 
   public static List<String> getImageTypes() {
-    return List.of("png", "jpeg", "jpg", "tiff");
+    return List.of(
+        PNG.getExtension(), JPG.getExtension(), JPEG.getExtension(), TIFF.getExtension());
   }
 
   public static List<String> getDocumentTypes() {
-    return List.of("pdf");
+    return List.of(PDF.getExtension());
   }
 }

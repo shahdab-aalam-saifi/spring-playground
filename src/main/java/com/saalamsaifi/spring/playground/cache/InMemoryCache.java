@@ -1,6 +1,7 @@
 package com.saalamsaifi.spring.playground.cache;
 
 import org.apache.commons.collections4.map.LRUMap;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +12,23 @@ public class InMemoryCache<K, V> {
   private final LRUMap map;
 
   protected class CacheObject {
-    public long lastAccessedAt = System.currentTimeMillis();
-    public V value;
+    private long lastAccessedAt = System.currentTimeMillis();
+    private final V value;
 
     protected CacheObject(V value) {
       this.value = value;
+    }
+
+    public void setLastAccessedAt(long lastAccessedAt) {
+      this.lastAccessedAt = lastAccessedAt;
+    }
+
+    public V getValue() {
+      return value;
+    }
+
+    public long getLastAccessedAt() {
+      return lastAccessedAt;
     }
   }
 
@@ -56,8 +69,8 @@ public class InMemoryCache<K, V> {
       if (Objects.isNull(cacheObject)) {
         return null;
       } else {
-        cacheObject.lastAccessedAt = System.currentTimeMillis();
-        return cacheObject.value;
+        cacheObject.setLastAccessedAt(System.currentTimeMillis());
+        return cacheObject.getValue();
       }
     }
   }

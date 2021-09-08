@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.saalamsaifi.spring.playground.model.LogRequest;
 import com.saalamsaifi.spring.playground.service.IClientInfoExtractService;
 import com.saalamsaifi.spring.playground.service.IRequestLogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -19,15 +18,19 @@ import java.io.IOException;
 
 @Component
 public class RequestLogFilter extends OncePerRequestFilter {
-  @Autowired
-  private IRequestLogService requestService;
-  @Autowired
-  private IClientInfoExtractService clientInfoService;
+  private final IRequestLogService requestService;
+  private final IClientInfoExtractService clientInfoService;
+
+  public RequestLogFilter(
+      IRequestLogService requestService, IClientInfoExtractService clientInfoService) {
+    this.requestService = requestService;
+    this.clientInfoService = clientInfoService;
+  }
 
   @Override
   protected void doFilterInternal(
-    HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-    throws ServletException, IOException {
+      HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+      throws ServletException, IOException {
     var requestWrapper = new ContentCachingRequestWrapper(request);
     var responseWrapper = new ContentCachingResponseWrapper(response);
 
