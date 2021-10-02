@@ -3,7 +3,6 @@ package com.saalamsaifi.spring.playground.service.impl;
 import com.saalamsaifi.spring.playground.model.Person;
 import com.saalamsaifi.spring.playground.repository.ListRepository;
 import com.saalamsaifi.spring.playground.service.IInterceptorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static org.apache.logging.log4j.util.Strings.isBlank;

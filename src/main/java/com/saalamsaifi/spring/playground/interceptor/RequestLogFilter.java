@@ -1,6 +1,5 @@
 package com.saalamsaifi.spring.playground.interceptor;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.saalamsaifi.spring.playground.model.LogRequest;
 import com.saalamsaifi.spring.playground.service.IClientInfoExtractService;
 import com.saalamsaifi.spring.playground.service.IRequestLogService;
@@ -47,8 +46,6 @@ public class RequestLogFilter extends OncePerRequestFilter {
     logRequest.setClientId(clientId);
     logRequest.setRequest(clientRequest);
     logRequest.setResponse(clientResponse);
-
-    System.out.println(new ObjectMapper().writeValueAsString(logRequest));
 
     responseWrapper.copyBodyToResponse();
   }

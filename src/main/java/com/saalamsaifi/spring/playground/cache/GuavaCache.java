@@ -24,7 +24,6 @@ public class GuavaCache<T> {
   public void add(String key, T value) {
     if (Objects.nonNull(key) && Objects.nonNull(value)) {
       cache.put(key, value);
-      System.out.println("Cache: " + value.getClass().getSimpleName() + " Key: " + key);
     }
   }
 }
