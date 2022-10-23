@@ -12,7 +12,7 @@ public class CustomRestControllerAdvice extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler(value = {NoPersonFoundException.class})
   public ResponseEntity<NoPersonFoundException> handleNoPersonFoundException(
-      NoPersonFoundException exception, WebRequest request) {
+    NoPersonFoundException exception, WebRequest request) {
     return ResponseEntity.badRequest().body(exception);
   }
 }

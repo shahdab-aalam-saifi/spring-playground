@@ -1,6 +1,7 @@
 package com.saalamsaifi.spring.playground.common.exception;
 
 public class NoPersonFoundException extends RuntimeException {
+
   private final String firstName;
 
   public NoPersonFoundException(String firstName) {

@@ -3,6 +3,7 @@ package com.saalamsaifi.spring.playground.controller;
 import com.saalamsaifi.spring.playground.common.utils.JwtTokenUtils;
 import com.saalamsaifi.spring.playground.request.JwtRequest;
 import com.saalamsaifi.spring.playground.response.JwtResponse;
+import java.security.Principal;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,22 +12,26 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/v1/secure")
 public class JwtController {
+
   private final AuthenticationManager manager;
   private final UserDetailsService service;
   private final JwtTokenUtils utils;
 
   public JwtController(
-      AuthenticationManager manager,
-      @Qualifier("jwt") UserDetailsService service,
-      JwtTokenUtils utils) {
+    AuthenticationManager manager,
+    @Qualifier("jwt") UserDetailsService service,
+    JwtTokenUtils utils) {
     this.manager = manager;
     this.service = service;
     this.utils = utils;

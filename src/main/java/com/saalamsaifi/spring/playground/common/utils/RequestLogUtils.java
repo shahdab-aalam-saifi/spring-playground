@@ -1,13 +1,14 @@
 package com.saalamsaifi.spring.playground.common.utils;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Collections;
 import java.util.List;
+import org.springframework.stereotype.Component;
 
 @Component
 public final class RequestLogUtils {
-  private RequestLogUtils() {}
+
+  private RequestLogUtils() {
+  }
 
   //// Request
   public static List<String> getRequestHeaders() {

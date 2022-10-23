@@ -1,13 +1,13 @@
 package com.saalamsaifi.spring.playground.repository;
 
 import com.saalamsaifi.spring.playground.model.Person;
-import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class PersonRepository implements ListRepository<Person> {
+
   private final List<Person> list;
 
   public PersonRepository() {

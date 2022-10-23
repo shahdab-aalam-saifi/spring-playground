@@ -1,36 +1,14 @@
 package com.saalamsaifi.spring.playground.cache;
 
-import org.apache.commons.collections4.map.LRUMap;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.apache.commons.collections4.map.LRUMap;
 
 public class InMemoryCache<K, V> {
+
   private final long ttl;
   private final LRUMap map;
-
-  protected class CacheObject {
-    private long lastAccessedAt = System.currentTimeMillis();
-    private final V value;
-
-    protected CacheObject(V value) {
-      this.value = value;
-    }
-
-    public void setLastAccessedAt(long lastAccessedAt) {
-      this.lastAccessedAt = lastAccessedAt;
-    }
-
-    public V getValue() {
-      return value;
-    }
-
-    public long getLastAccessedAt() {
-      return lastAccessedAt;
-    }
-  }
 
   public InMemoryCache(long ttl, final long interval, int maxItems) {
     this.ttl = ttl * 1000;
@@ -38,16 +16,16 @@ public class InMemoryCache<K, V> {
 
     if (ttl > 0 && interval > 0) {
       Runnable task =
-          () -> {
-            while (true) {
-              try {
-                Thread.sleep(interval * 1000);
-              } catch (InterruptedException e) {
-                // ignore
-              }
-              cleanUp();
+        () -> {
+          while (true) {
+            try {
+              Thread.sleep(interval * 1000);
+            } catch (InterruptedException e) {
+              // ignore
             }
-          };
+            cleanUp();
+          }
+        };
 
       var t = new Thread(task);
       t.setDaemon(true);
@@ -117,6 +95,28 @@ public class InMemoryCache<K, V> {
       }
 
       Thread.yield();
+    }
+  }
+
+  protected class CacheObject {
+
+    private final V value;
+    private long lastAccessedAt = System.currentTimeMillis();
+
+    protected CacheObject(V value) {
+      this.value = value;
+    }
+
+    public V getValue() {
+      return value;
+    }
+
+    public long getLastAccessedAt() {
+      return lastAccessedAt;
+    }
+
+    public void setLastAccessedAt(long lastAccessedAt) {
+      this.lastAccessedAt = lastAccessedAt;
     }
   }
 }

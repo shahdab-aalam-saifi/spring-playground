@@ -1,18 +1,18 @@
 package com.saalamsaifi.spring.playground.controller;
 
 import com.saalamsaifi.spring.playground.cache.GuavaCache;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v1/cache")
 public class CacheController {
+
   private final GuavaCache<String> uuidCache;
 
   public CacheController(GuavaCache<String> uuidCache) {

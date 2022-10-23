@@ -4,15 +4,15 @@ import com.saalamsaifi.spring.playground.common.utils.RequestLogUtils;
 import com.saalamsaifi.spring.playground.model.Request;
 import com.saalamsaifi.spring.playground.model.Response;
 import com.saalamsaifi.spring.playground.service.IRequestLogService;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-
 @Service
 public class RequestLogServiceImpl implements IRequestLogService {
+
   @Override
   public Request logRequestInfo(ContentCachingRequestWrapper wrapper)
     throws UnsupportedEncodingException {

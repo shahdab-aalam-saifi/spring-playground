@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/v1")
 public class InterceptorController {
+
   private final IInterceptorService service;
 
   public InterceptorController(IInterceptorService service) {

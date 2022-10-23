@@ -2,20 +2,20 @@ package com.saalamsaifi.spring.playground.service.impl;
 
 import com.saalamsaifi.spring.playground.common.utils.EncoderUtils;
 import com.saalamsaifi.spring.playground.service.IEncoderService;
+import java.io.File;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.io.File;
 
 @Service
 @Qualifier("encode")
 public class EncoderServiceImpl implements IEncoderService {
+
   private final ImageEncoderService imageService;
   private final DocumentEncoderService documentService;
 
   public EncoderServiceImpl(
-      @Qualifier("image") ImageEncoderService imageService,
-      @Qualifier("document") DocumentEncoderService documentService) {
+    @Qualifier("image") ImageEncoderService imageService,
+    @Qualifier("document") DocumentEncoderService documentService) {
     this.imageService = imageService;
     this.documentService = documentService;
   }

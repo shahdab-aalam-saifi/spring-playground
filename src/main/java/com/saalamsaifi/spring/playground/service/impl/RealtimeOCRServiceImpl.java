@@ -3,14 +3,13 @@ package com.saalamsaifi.spring.playground.service.impl;
 import com.saalamsaifi.spring.playground.request.PostExtractRequest;
 import com.saalamsaifi.spring.playground.service.IEncoderService;
 import com.saalamsaifi.spring.playground.service.IRealtimeOCRService;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 @Service
 public class RealtimeOCRServiceImpl implements IRealtimeOCRService {
@@ -24,7 +23,7 @@ public class RealtimeOCRServiceImpl implements IRealtimeOCRService {
   @Override
   public Map<String, String> extract(PostExtractRequest request) throws IOException {
     var file =
-        encoderService.encode(request.getFileName(), request.getFileType(), request.getFileBytes());
+      encoderService.encode(request.getFileName(), request.getFileType(), request.getFileBytes());
 
     var map = new HashMap<String, String>();
 
